@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: url("IMG_1918.JPG") no-repeat center center fixed;
+            background-size: cover;
+            padding: 50px;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 3rem;
+            color: red;
+            font-weight: bold;
+        }
+        .buttons {
+            margin-top: 20px;
+            position: relative;
+        }
+        button {
+            font-size: 1.5rem;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+        }
+        .yes {
+            background-color: lightgreen;
+        }
+        .no {
+            background-color: lightcoral;
+            position: absolute;
+        }
+
+        /* Heart Confetti Styles */
+        .heart {
+            position: fixed;
+            font-size: 2rem;
+            color: red;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Will You Be My Valentine? ❤️</h1>
+    <div class="buttons">
+        <button class="yes" onclick="startConfetti()">Yes</button>
+        <button class="no" onmouseover="moveButton()">No</button>
+    </div>
+
+    <script>
+        function moveButton() {
+            let button = document.querySelector('.no');
+            let x = Math.random() * window.innerWidth * 0.7;
+            let y = Math.random() * window.innerHeight * 0.7;
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+        }
+
+        function startConfetti() {
+            for (let i = 0; i < 50; i++) {
+                let heart = document.createElement("div");
+                heart.classList.add("heart");
+                heart.innerHTML = "❤️";
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = Math.random() * 2 + 3 + "s"; 
+                heart.style.fontSize = Math.random() * 1.5 + 1 + "rem";
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000);
+            }
+        }
+    </script>
+</body>
+</html>
+
